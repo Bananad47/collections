@@ -1,11 +1,14 @@
 package linked_list
 
+import "github.com/collections/iter"
+
 type LinkedList[T any] interface {
 	PushBack(val ...T)
 	Insert(val T, pos int)
 	Delete(pos int) bool
 	Size() int
 	IsEmpty() bool
+	Iterator() iter.Iterator[T]
 }
 
 type linkedList[T any] struct {
@@ -98,6 +101,12 @@ func (l *linkedList[T]) Delete(pos int) bool {
 	}
 	nd.next = nd.next.next
 	return true
+}
+
+func (l *linkedList[T]) Iterator() iter.Iterator {
+	return &linkedListIterator[T]{
+		nd: l.nd,
+	}
 }
 
 func NewLinkedList[T any](constructors ...func(list LinkedList[T])) LinkedList[T] {
