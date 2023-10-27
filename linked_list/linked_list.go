@@ -1,6 +1,6 @@
 package linked_list
 
-import "github.com/collections/iter"
+import "github.com/Bananad47/collections/iter"
 
 type LinkedList[T any] interface {
 	PushBack(val ...T)
