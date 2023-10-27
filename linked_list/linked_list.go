@@ -103,7 +103,7 @@ func (l *linkedList[T]) Delete(pos int) bool {
 	return true
 }
 
-func (l *linkedList[T]) Iterator() iter.Iterator {
+func (l *linkedList[T]) Iterator() iter.Iterator[T] {
 	return &linkedListIterator[T]{
 		nd: l.nd,
 	}

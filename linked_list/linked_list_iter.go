@@ -4,7 +4,7 @@ type linkedListIterator[T any] struct {
 	nd *node[T]
 }
 
-func (i *linkedListIterator[T]) _isEnd() bool {
+func (i *linkedListIterator[T]) IsEnd() bool {
 	if i.nd == nil {
 		return true
 	}
@@ -12,7 +12,7 @@ func (i *linkedListIterator[T]) _isEnd() bool {
 }
 
 func (i *linkedListIterator[T]) Next() bool {
-	if i._isEnd() {
+	if i.IsEnd() {
 		return false
 	}
 	i.nd = i.nd.next
@@ -21,14 +21,14 @@ func (i *linkedListIterator[T]) Next() bool {
 
 func (i *linkedListIterator[T]) Value() T {
 	var res T
-	if !i._isEnd() {
+	if !i.IsEnd() {
 		res = i.nd.val
 	}
 	return res
 }
 
 func (i *linkedListIterator[T]) ChangeValue(val T) {
-	if i._isEnd() {
+	if i.IsEnd() {
 		return
 	}
 	i.nd.val = val
